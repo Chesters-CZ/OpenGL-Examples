@@ -24,6 +24,15 @@ public class Game {
     private static int squareVboId;
     private static int squareEboId;
 
+    private static boolean[][] mapa = {
+            {true, false, true, true, true},
+
+            {true, false, false, false, true},
+            {true, true, true, false, true},
+            {false, true, false, false, true},
+            {true, true, true, true, true}
+    };
+
     public static void init(long window) {
         // Setup shaders
         Shaders.initShaders();
@@ -33,6 +42,12 @@ public class Game {
         squareVboId = GL33.glGenBuffers();
         squareEboId = GL33.glGenBuffers();
 
+        drawangle();
+
+
+    }
+
+    public static void drawangle(){
         // Tell OpenGL we are currently using this object (vaoId)
         GL33.glBindVertexArray(squareVaoId);
 
